@@ -8,6 +8,7 @@ import cloudinary.uploader
 
 # ================= CONFIG =================
 TOKEN = "8664839948:AAFuJnMEDmuII56jdfJx2AavKccXDVwJt_U"
+YOUR_TELEGRAM_ID = 8007670371
 
 # Cloudinary config (ro'yxatdan olasan)
 cloudinary.config(
@@ -56,6 +57,11 @@ async def send_player(msg: types.Message):
 # ================= WEB =================
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
+    user_id = request.args.get("user_id")
+    
+    if not user_id or int(user_id) != YOUR_TELEGRAM_ID:
+        return "❌ Ruxsat yo'q! Admin panelga kirish man qilingan.", 403
+    
     data = load_data()
 
     if request.method == "POST":
@@ -74,16 +80,21 @@ def admin():
         data.append(new)
         save_data(data)
 
-        return redirect("/admin")
+        return redirect(f"/admin?user_id={YOUR_TELEGRAM_ID}")
 
     return render_template("admin.html", data=data)
 
 @app.route("/delete/<name>")
 def delete(name):
+    user_id = request.args.get("user_id")
+    
+    if not user_id or int(user_id) != YOUR_TELEGRAM_ID:
+        return "❌ Ruxsat yo'q!", 403
+    
     data = load_data()
     data = [p for p in data if p["name"] != name]
     save_data(data)
-    return redirect("/admin")
+    return redirect(f"/admin?user_id={YOUR_TELEGRAM_ID}")
 
 # ================= RUN =================
 async def start_bot():
