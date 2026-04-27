@@ -9,7 +9,7 @@ import cloudinary.uploader
 # ================= CONFIG =================
 TOKEN = "8649118325:AAHAhci1MpQKLDfSfQxq6lvrDUM06h4H8jo"
 
-# Cloudinary config (ro‘yxatdan olasan)
+# Cloudinary config (ro'yxatdan olasan)
 cloudinary.config(
     cloud_name="CLOUD_NAME",
     api_key="API_KEY",
@@ -36,7 +36,7 @@ async def start(msg: types.Message):
     data = load_data()
 
     if not data:
-        await msg.answer("Hozircha chust yo‘q 😢")
+        await msg.answer("Hozircha chust yo'q 😢")
         return
 
     text = "🎮 Playerlar:\n"
@@ -94,5 +94,5 @@ def run_all():
     loop.create_task(start_bot())
     app.run(host="0.0.0.0", port=10000)
 
-if name == "__main__":
+if __name__ == "__main__":
     run_all()
