@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+</head>
+<body>
+
+<h2>➕ Chust qo‘shish</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    <input name="name" placeholder="Player nomi"><br><br>
+    <input type="file" name="image"><br><br>
+    <input name="text" placeholder="Text"><br><br>
+    <button type="submit">Qo‘shish</button>
+</form>
+
+<h2>📋 Ro‘yxat</h2>
+<ul>
+{% for p in data %}
+<li>
+{{p.name}} 
+<a href="/delete/{{p.name}}">❌</a>
+</li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
