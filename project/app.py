@@ -7,7 +7,7 @@ import cloudinary
 import cloudinary.uploader
 
 # ================= CONFIG =================
-TOKEN = "8649118325:AAHAhci1MpQKLDfSfQxq6lvrDUM06h4H8jo"
+TOKEN = "8664839948:AAFuJnMEDmuII56jdfJx2AavKccXDVwJt_U"
 
 # Cloudinary config (ro'yxatdan olasan)
 cloudinary.config(
